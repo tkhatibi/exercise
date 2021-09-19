@@ -1,7 +1,7 @@
 #!/bin/bash
 
 run() {
-  $APP exec api composer ${@:1}
+  $APP exec api composer ${@:1} -d api
 }
 
 help() {
