@@ -73,5 +73,8 @@
             "allow-contrib": false,
             "require": "5.3.*"
         }
+    },
+    "require-dev": {
+        "api-platform/schema-generator": "^3.0"
     }
 }
