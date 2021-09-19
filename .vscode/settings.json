@@ -1,0 +1,7 @@
+{
+  "php.validate.executablePath": "bin/php",
+  "favorites.resources": [
+    "docker"
+  ],
+  "eslint.nodePath": "bin/node"
+}
