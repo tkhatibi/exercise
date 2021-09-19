@@ -1,0 +1,93 @@
+version: "3.7"
+services:
+  web:
+    container_name: ${PROJECT_NAME}_web
+    image: ${NODE_IMAGE}
+    working_dir: /usr/src/app
+    stdin_open: true # docker run -i
+    tty: true # docker run -t
+    ports:
+      - "${WEB_PORT}:3000"
+    volumes:
+      - ./web:/usr/src/app
+    links:
+      - db
+    networks:
+      - default
+    environment:
+      NODE_ENV: ${PROJECT_FLAVOR}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+  api:
+    container_name: ${PROJECT_NAME}_api
+    image: ${PHP_IMAGE}
+    ports:
+      - "${API_PORT}:8000"
+    volumes:
+      - .:/app
+    links:
+      - db
+    networks:
+      - default
+    environment:
+      SYMFONY_PROJECT_NAME: api
+      MARIADB_HOST: ${MYSQL_HOST}
+      MARIADB_PORT_NUMBER: ${MYSQL_PORT}
+      MARIADB_DATABASE: ${MYSQL_DATABASE}
+      MARIADB_USER: ${MYSQL_USER}
+      MARIADB_PASSWORD: ${MYSQL_PASSWORD}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+  db:
+    container_name: ${PROJECT_NAME}_db
+    image: ${MYSQL_IMAGE}
+    ports:
+      - "${MYSQL_PORT}:3306"
+    command: --sql-mode=''
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - persistent:/var/lib/mysql
+    networks:
+      - default
+    healthcheck:
+      test: "/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} --execute \"use ${MYSQL_DATABASE}; \""
+      interval: 3s
+      timeout: 1s
+      retries: 20
+    restart: always
+  adminer:
+    container_name: ${PROJECT_NAME}_adminer
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - ${ADMINER_PORT}:8080
+  phpmyadmin:
+    container_name: ${PROJECT_NAME}_phpmyadmin
+    image: ${PHPMYADMIN_IMAGE}
+    links:
+      - db:db
+    ports:
+      - ${PHPMYADMIN_PORT}:80
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  persistent:
