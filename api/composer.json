@@ -75,6 +75,7 @@
         }
     },
     "require-dev": {
-        "api-platform/schema-generator": "^3.0"
+        "api-platform/schema-generator": "^3.0",
+        "symfony/maker-bundle": "^1.33"
     }
 }
