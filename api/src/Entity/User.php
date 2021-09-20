@@ -18,7 +18,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *         "post"={
  *             "denormalization_context"={"groups"={User::REGISTER}},
  *             "normalization_context"={"groups"={User::DETAIL}},
- *             "security_post_denormalize"="is_granted('route', object)",
  *         },
  *     },
  *     itemOperations={
