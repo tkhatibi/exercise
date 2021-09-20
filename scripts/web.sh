@@ -1,9 +1,9 @@
 #!/bin/bash
 
 run() {
-  $APP exec web bash ${@:1}
+  $APP exec web sh ${@:1}
 }
 
 help() {
-  echo "Executes bash from web service";
+  echo "Executes sh from web service";
 }
