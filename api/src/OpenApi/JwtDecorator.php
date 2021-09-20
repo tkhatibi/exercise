@@ -28,6 +28,14 @@ final class JwtDecorator implements OpenApiFactoryInterface
                     'type' => 'string',
                     'readOnly' => true,
                 ],
+                'id' => [
+                    'type' => 'number',
+                    'readOnly' => true,
+                ],
+                'username' => [
+                    'type' => 'string',
+                    'readOnly' => true,
+                ],
             ],
         ]);
 
@@ -36,11 +44,11 @@ final class JwtDecorator implements OpenApiFactoryInterface
             'properties' => [
                 'username' => [
                     'type' => 'string',
-                    'example' => 'johndoe',
+                    'example' => 'string',
                 ],
                 'password' => [
                     'type' => 'string',
-                    'example' => 'apassword',
+                    'example' => 'string',
                 ],
             ],
         ]);
