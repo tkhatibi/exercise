@@ -8,7 +8,7 @@ import { useAuth } from '../hooks';
 
 const Home: NextPage = () => {
   const {
-    state: { isLoggedIn },
+    state: { loggedIn },
   } = useAuth();
   return (
     <>
@@ -34,11 +34,11 @@ const Home: NextPage = () => {
               Hi, I am Touraj Khatibi, and this is an exercise.
             </h1>
             <p className="text-xl text-white text-center md:text-left">
-              The tools that I used in these project are Docker, Mariadb, PHP,
+              The tools that I used in this project are Docker, Mariadb, PHP,
               Symfony, Api Platform, OpenApi Generator, Bash, React, Next.js and
               Tailwind.
             </p>
-            {isLoggedIn || (
+            {loggedIn || (
               <>
                 <br />
                 <p className="text-xl text-white text-center md:text-left">
@@ -53,7 +53,7 @@ const Home: NextPage = () => {
                 </Link>
               </>
             )}
-            {isLoggedIn && (
+            {loggedIn && (
               <>
                 <br />
                 <p className="text-xl text-white text-center md:text-left">
