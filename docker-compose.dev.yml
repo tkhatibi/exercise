@@ -25,6 +25,12 @@ services:
       db:
         condition: service_healthy
     restart: unless-stopped
+  oag:
+    container_name: ${PROJECT_NAME}_oag
+    image: ${OPENAPI_GENERATOR_IMAGE}
+    working_dir: /local
+    volumes:
+      - .:/local
   api:
     container_name: ${PROJECT_NAME}_api
     image: ${PHP_IMAGE}
