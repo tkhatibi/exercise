@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Template } from '../components/Template';
+import { Layout } from '../components/Layout';
 
 const About: NextPage = () => {
   return (
@@ -14,7 +14,7 @@ const About: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Template>
+      <Layout>
         <div className="w-2/3 mx-auto">
           <div className="bg-white shadow-md rounded my-6">
             <table className="text-left w-full border-collapse">
@@ -50,7 +50,7 @@ const About: NextPage = () => {
             </table>
           </div>
         </div>
-      </Template>
+      </Layout>
     </>
   );
 };

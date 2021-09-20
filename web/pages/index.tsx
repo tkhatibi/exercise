@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link';
 import React from 'react';
-import { Template } from '../components/Template';
+import { Layout } from '../components/Layout';
 
 const Home: NextPage = () => {
   return (
@@ -14,7 +14,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Template>
+      <Layout>
         <div className="container mx-auto mt-8 md:mt-0 md:space-x-10 md:grid grid-cols-3 justify-center md:py-40">
           <div className="grid justify-center items-center order-1 col-span-1">
             <Image
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
             </Link>
           </div>
         </div>
-      </Template>
+      </Layout>
     </>
   );
 };

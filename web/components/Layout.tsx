@@ -3,7 +3,7 @@ import { Footer } from './Footer';
 import { NavBar } from './NavBar';
 import { NavBarItem } from './NavBarItem';
 
-export const Template: NextPage = ({ children }) => (
+export const Layout: NextPage = ({ children }) => (
   <div className="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
     <NavBar brand="Exercise">
       <NavBarItem active={false} href="/login" title="Login" />

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Template } from '../components/Template';
+import { Layout } from '../components/Layout';
 
 const Login: NextPage = () => {
   return (
@@ -15,7 +15,7 @@ const Login: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Template>
+      <Layout>
         <header className="max-w-lg mx-auto">
           <a href="#">
             <h1 className="text-4xl font-bold text-white text-center">Login</h1>
@@ -75,7 +75,7 @@ const Login: NextPage = () => {
             .
           </p>
         </div>
-      </Template>
+      </Layout>
     </>
   );
 };
