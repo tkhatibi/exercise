@@ -5,12 +5,13 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -63,6 +64,9 @@ class User
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getPassword(): ?string
     {
         return $this->password;
@@ -73,5 +77,38 @@ class User
         $this->password = $password;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRoles(): ?array
+    {
+        return [];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUserIdentifier(): ?string
+    {
+        return $this->username;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSalt(): void
+    {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        $this->password = null;
     }
 }
