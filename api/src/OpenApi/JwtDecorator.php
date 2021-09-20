@@ -48,7 +48,7 @@ final class JwtDecorator implements OpenApiFactoryInterface
         $loginPath = (new Model\PathItem())
             ->withRef('JWT Token')
             ->withPost((new Model\Operation)
-                ->withOperationId('postCredentialsItem')
+                ->withOperationId('login')
                 ->withTags(['Authentication'])
                 ->withResponses([
                     '200' => [
