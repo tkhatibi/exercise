@@ -77,7 +77,9 @@
     },
     "require-dev": {
         "api-platform/schema-generator": "^3.0",
+        "symfony/debug-bundle": "5.3.*",
         "symfony/maker-bundle": "^1.33",
+        "symfony/monolog-bundle": "^3.0",
         "symfony/stopwatch": "5.3.*",
         "symfony/web-profiler-bundle": "5.3.*"
     }
