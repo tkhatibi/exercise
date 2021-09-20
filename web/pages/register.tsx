@@ -1,9 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Layout } from '../components/Layout';
+import { Alert, Button, Layout } from '../components';
+import { useRegister } from '../hooks';
 
 const Register: NextPage = () => {
+  const { alert, register, submit, submitting } = useRegister();
   return (
     <>
       <Head>
@@ -30,19 +32,24 @@ const Register: NextPage = () => {
             <p className="text-gray-600 pt-2">Register for free.</p>
           </section>
 
-          <section className="mt-10">
-            <form className="flex flex-col" method="POST" action="#">
+          <section className="mt-6">
+            <form className="flex flex-col" onSubmit={submit}>
+              {alert && (
+                <div className="mb-6">
+                  <Alert value={alert} />
+                </div>
+              )}
               <div className="mb-6 pt-3 rounded bg-gray-200">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2 ml-3"
-                  htmlFor="fullName"
+                  htmlFor="name"
                 >
                   Full Name
                 </label>
                 <input
                   type="text"
-                  id="fullName"
                   className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
+                  {...register('name')}
                 />
               </div>
               <div className="mb-6 pt-3 rounded bg-gray-200">
@@ -54,8 +61,8 @@ const Register: NextPage = () => {
                 </label>
                 <input
                   type="text"
-                  id="username"
                   className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
+                  {...register('username')}
                 />
               </div>
               <div className="mb-6 pt-3 rounded bg-gray-200">
@@ -69,14 +76,16 @@ const Register: NextPage = () => {
                   type="password"
                   id="password"
                   className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
+                  {...register('password')}
                 />
               </div>
-              <button
+              <Button
                 className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
                 type="submit"
+                disabled={submitting}
               >
                 Register
-              </button>
+              </Button>
             </form>
           </section>
         </main>

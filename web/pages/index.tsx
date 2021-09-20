@@ -3,9 +3,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link';
 import React from 'react';
-import { Layout } from '../components/Layout';
+import { Layout } from '../components';
+import { useAuth } from '../hooks';
 
 const Home: NextPage = () => {
+  const {
+    state: { isLoggedIn },
+  } = useAuth();
   return (
     <>
       <Head>
@@ -31,15 +35,38 @@ const Home: NextPage = () => {
             </h1>
             <p className="text-xl text-white text-center md:text-left">
               The tools that I used in these project are Docker, Mariadb, PHP,
-              Symfony, Api Platform, Bash, React, Next.js and Tailwind. You can
-              register to see all the pages in this exercise project.
+              Symfony, Api Platform, OpenApi Generator, Bash, React, Next.js and
+              Tailwind.
             </p>
-            <br />
-            <Link href="/register">
-              <a className="mt-8 mx-auto md:mx-0 text-2xl py-3 px-6 text-red-50 font-semibold rounded bg-red-400">
-                Register
-              </a>
-            </Link>
+            {isLoggedIn || (
+              <>
+                <br />
+                <p className="text-xl text-white text-center md:text-left">
+                  You can register to see all the pages in this exercise
+                  project.
+                </p>
+                <br />
+                <Link href="/register">
+                  <a className="mt-8 mx-auto md:mx-0 text-2xl py-3 px-6 text-red-50 font-semibold rounded bg-red-400">
+                    Register
+                  </a>
+                </Link>
+              </>
+            )}
+            {isLoggedIn && (
+              <>
+                <br />
+                <p className="text-xl text-white text-center md:text-left">
+                  Now that you are logged in, you can see list of users.
+                </p>
+                <br />
+                <Link href="/users">
+                  <a className="mt-8 mx-auto md:mx-0 text-2xl py-3 px-6 text-red-50 font-semibold rounded bg-red-400">
+                    Users
+                  </a>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </Layout>

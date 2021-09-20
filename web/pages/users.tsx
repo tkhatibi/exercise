@@ -1,15 +1,17 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Layout } from '../components/Layout';
+import { Layout } from '../components';
+import { useUsers } from '../hooks';
 
-const About: NextPage = () => {
+const Users: NextPage = () => {
+  const { fetching, users } = useUsers();
   return (
     <>
       <Head>
-        <title>About</title>
+        <title>Users</title>
         <meta
           name="description"
-          content="Shows some description about the project"
+          content="Shows some description Users the project"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -30,22 +32,24 @@ const About: NextPage = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="hover:bg-grey-lighter">
-                  <td className="py-4 px-6 border-b border-grey-light">
-                    Full Name
-                  </td>
-                  <td className="py-4 px-6 border-b border-grey-light">
-                    New York
-                  </td>
-                  <td className="py-4 px-6 border-b border-grey-light">
-                    <a
-                      href="#"
-                      className="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark"
-                    >
-                      View
-                    </a>
-                  </td>
-                </tr>
+                {(users || []).map((user) => (
+                  <tr key={user.id} className="hover:bg-grey-lighter">
+                    <td className="py-4 px-6 border-b border-grey-light">
+                      {user.name}
+                    </td>
+                    <td className="py-4 px-6 border-b border-grey-light">
+                      {user.username}
+                    </td>
+                    <td className="py-4 px-6 border-b border-grey-light">
+                      <a
+                        href="#"
+                        className="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark"
+                      >
+                        View
+                      </a>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -55,4 +59,4 @@ const About: NextPage = () => {
   );
 };
 
-export default About;
+export default Users;
