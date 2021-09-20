@@ -27,3 +27,8 @@ services:
     App\OpenApi\JwtDecorator:
         decorates: 'api_platform.openapi.factory'
         arguments: ['@.inner']
+
+    App\EventSubscriber\EntitySubscriber:
+        arguments: ['@request_stack']
+        tags:
+            - { name: doctrine.event_subscriber }
