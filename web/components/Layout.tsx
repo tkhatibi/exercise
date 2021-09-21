@@ -11,21 +11,11 @@ export const Layout: React.FunctionComponent = ({ children }) => {
   return (
     <div className="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
       <NavBar brand="Exercise">
-        {loggedIn || (
-          <NavBarItem active={false} handler="/login" title="Login" />
-        )}
-        {loggedIn || (
-          <NavBarItem active={false} handler="/register" title="Register" />
-        )}
-        {loggedIn && (
-          <NavBarItem active={false} handler="/users" title="Users" />
-        )}
-        {loggedIn && (
-          <NavBarItem active={false} handler="/settings" title="Settings" />
-        )}
-        {loggedIn && (
-          <NavBarItem active={false} handler={logout} title="Logout" />
-        )}
+        {loggedIn || <NavBarItem handler="/login" title="Login" />}
+        {loggedIn || <NavBarItem handler="/register" title="Register" />}
+        {loggedIn && <NavBarItem handler="/users" title="Users" />}
+        {loggedIn && <NavBarItem handler="/settings" title="Settings" />}
+        {loggedIn && <NavBarItem handler={logout} title="Logout" />}
       </NavBar>
 
       {children}
