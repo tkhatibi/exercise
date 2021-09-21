@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -41,6 +42,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     }
  * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Table(
+ *     name="`user`",
+ *     uniqueConstraints={
+ *         @ORM\UniqueConstraint(name="user__username__unique", columns={"username"})
+ *     }
+ * )
+ * @UniqueEntity(fields="username", groups={User::REGISTER})
  */
 class User implements UserInterface
 {
