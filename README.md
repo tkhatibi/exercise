@@ -13,7 +13,7 @@ If you're on windows you need to use `git-bash` to run commands bellow.
 ## Setup
 
 ```bash
-$ git clone git@gitlab.com
+$ git clone git@github.com:tkhatibi/exercise.git
 $ cd exercise
 $ chmod ugo+x app bin/* scripts/*
 $ ./app init
