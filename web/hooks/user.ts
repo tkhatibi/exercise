@@ -16,9 +16,8 @@ import {
 } from '../openapi';
 import { Alert, useAlert } from '.';
 
-const { Provider: AuthProvider, usePersistedState } = createPersistedState<
-  Token | undefined
->('auth', undefined);
+const { Provider: AuthProvider, usePersistedState } =
+  createPersistedState<Token>('auth', {});
 
 export function useAuth() {
   const { push } = useRouter();
@@ -26,16 +25,16 @@ export function useAuth() {
   const [state, setState] = usePersistedState();
 
   const setToken = (token?: Token) => {
-    setState(token);
+    setState(token || {});
     push(token ? '/' : '/login');
   };
 
   return {
     state: {
       ...state,
-      loggedIn: state !== undefined,
+      loggedIn: state.token !== undefined,
     },
-    agent: createAgent(state),
+    agent: createAgent(state.token),
     setToken,
     unsetToken: () => setToken(),
   };

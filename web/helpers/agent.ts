@@ -4,7 +4,7 @@ import * as $ from '../openapi';
 
 const baseURL = process.env.NEXT_PUBLIC_API_HOST;
 
-export function createAgent(token?: $.Token) {
+export function createAgent(token?: string) {
   const axios = Axios.create({
     baseURL,
     headers: {
@@ -25,7 +25,7 @@ export function createAgent(token?: $.Token) {
     },
   });
   if (token) {
-    axios.defaults.headers.Authorization = `Bearer ${token.token}`;
+    axios.defaults.headers.Authorization = `Bearer ${token}`;
   }
   return {
     auth: new $.AuthenticationApi(undefined, baseURL, axios),
