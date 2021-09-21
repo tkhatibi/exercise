@@ -1,4 +1,4 @@
-import { useAuth, useLogout, useProfile } from '../hooks';
+import { useAuth, useLogout } from '../hooks';
 import { Footer } from './Footer';
 import { NavBar } from './NavBar';
 import { NavBarItem } from './NavBarItem';
