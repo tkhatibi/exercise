@@ -2,8 +2,9 @@ import Axios from 'axios';
 import { Agent } from 'https';
 import * as $ from '../openapi';
 
+const baseURL = process.env.NEXT_PUBLIC_API_HOST;
+
 export function createAgent(token?: $.Token) {
-  const baseURL = 'http://localhost:5000';
   const axios = Axios.create({
     baseURL,
     headers: {

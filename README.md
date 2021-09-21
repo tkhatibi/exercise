@@ -23,7 +23,7 @@ After 20 seconds all services will be running.
 
 ## Services
 
-### [Web App](http://localhost:5050)
+### [Web App](http://localhost:3000)
 
 ### [Swagger UI](http://localhost:5000/api)
 

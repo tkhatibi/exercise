@@ -16,11 +16,7 @@ services:
       - default
     environment:
       NODE_ENV: ${PROJECT_FLAVOR}
-      MYSQL_HOST: ${MYSQL_HOST}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      NEXT_PUBLIC_API_HOST: ${API_HOST}
     depends_on:
       db:
         condition: service_healthy
