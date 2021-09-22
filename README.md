@@ -32,7 +32,3 @@ After 20 seconds all services will be running.
 ### [Adminer](http://localhost:8880/?server=db&username=exercise&db=exercise)
 - system: `MySQL` 
 - password: `exercise`
-
-### [PhpMyAdmin](http://localhost:8881)
-- username: `exercise`
-- password: `exercise`
