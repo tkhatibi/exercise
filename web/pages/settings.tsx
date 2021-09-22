@@ -29,7 +29,7 @@ const Settings: NextPage = () => {
         <main className="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
           <section>
             <h3 className="font-bold text-2xl">
-              {'Want to update your profile? '}
+              {"Want to update your profile? "}
             </h3>
             <p className="text-gray-600 pt-2">
               Except your username everything is editable :)
@@ -54,8 +54,8 @@ const Settings: NextPage = () => {
                   type="text"
                   id="name"
                   className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
+                  {...register("name")}
                   defaultValue={profile?.name}
-                  {...register('name')}
                 />
               </div>
               <div className="mb-6 pt-3 rounded bg-gray-200">
@@ -69,7 +69,7 @@ const Settings: NextPage = () => {
                   type="password"
                   id="password"
                   className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3"
-                  {...register('password')}
+                  {...register("password")}
                 />
               </div>
               <Button
@@ -93,7 +93,7 @@ const Settings: NextPage = () => {
             >
               Delete
             </Button>
-            {' your account.'}
+            {" your account."}
           </p>
         </div>
       </Layout>
