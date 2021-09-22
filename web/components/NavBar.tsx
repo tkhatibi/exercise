@@ -4,11 +4,8 @@ export interface NavBarProps {
   brand: string;
 }
 
-export const NavBar: React.FunctionComponent<NavBarProps> = ({
-  brand,
-  children,
-}) => (
-  <nav className="bg-gray-800 p-2 mt-0 fixed w-full z-10 top-0">
+export const NavBar: React.FunctionComponent<NavBarProps> = ({ brand, children }) => (
+  <nav className="bg-gray-600 bg-opacity-30 p-2 mt-0 fixed w-full z-10 top-0">
     <div className="container mx-auto flex flex-wrap items-center">
       <div className="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
         <Link href="/">
