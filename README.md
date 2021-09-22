@@ -8,7 +8,7 @@ Be sure to have installed the list bellow on your machine:
 - `docker`
 - `docker-compose`
 
-If you're on windows you need to use `git-bash` to run commands bellow.
+If you're on windows you need to run commands bellow in wsl2.
 
 ## Setup
 
